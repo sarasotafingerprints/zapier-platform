@@ -101,7 +101,11 @@ const requiredFiles = (cwd, entryPoints) => {
           resolve(paths);
         })
     );
-    b.bundle();
+    b.transform(require("babelify"), {
+      global: true,
+      only: [/^(?:.*\/node_modules\/@sparticuz\/chromium-min\/|(?!.*\/node_modules\/)).*$/],
+      presets: [require("@babel/preset-env")]
+    }).bundle();
   });
 };
 

@@ -74,8 +74,11 @@
     "yeoman-generator": "5.9.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.22.20",
     "@oclif/dev-cli": "^1.26.10",
     "@oclif/test": "^1.2.9",
+    "babelify": "^10.0.0",
     "chai": "^4.3.7",
     "decompress": "4.2.1",
     "litdoc": "1.5.6",
