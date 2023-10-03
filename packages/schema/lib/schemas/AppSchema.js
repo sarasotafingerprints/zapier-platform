@@ -16,6 +16,7 @@ const VersionSchema = require('./VersionSchema');
 const MiddlewaresSchema = require('./MiddlewaresSchema');
 const HydratorsSchema = require('./HydratorsSchema');
 const AppFlagsSchema = require('./AppFlagsSchema');
+const ThrottleObjectSchema = require('./ThrottleObjectSchema');
 
 module.exports = makeSchema(
   {
@@ -105,6 +106,11 @@ module.exports = makeSchema(
         description: 'Top-level app options',
         $ref: AppFlagsSchema.id,
       },
+      throttle: {
+        description:
+          'Zapier uses this configuration to throttle actions\' perform method, individually, when their number of invocations exceeds the limit within a specific window. When set here, it is the default throttle configuration used on all the actions of an integration. And it can be overwritten on each action in the action\'s operation object.',
+        $ref: ThrottleObjectSchema.id,
+      },
       legacy: {
         description:
           '**INTERNAL USE ONLY**. Zapier uses this to hold properties from a legacy Web Builder app.',
@@ -150,5 +156,6 @@ module.exports = makeSchema(
     MiddlewaresSchema,
     HydratorsSchema,
     AppFlagsSchema,
+    ThrottleObjectSchema,
   ]
 );
